@@ -6,10 +6,16 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
-<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
-
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css'/>" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="<c:url value='/components/jqgrid/css/ui.jqgrid.css'/>" />
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+<!-- jQuery UI -->
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script src="<c:url value='/components/jqgrid/js/jquery.jqGrid.min.js'/>"></script>
+<script src="<c:url value='/components/jqgrid/js/i18n/grid.locale-kr.js'/>"></script>
+<!-- Common -->
+<script src="<c:url value='/js/common.js'/>"></script>

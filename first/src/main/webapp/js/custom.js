@@ -389,7 +389,7 @@ function template_functions(){
 		} );
 	$('.btn-close').click(function(e){
 		e.preventDefault();
-		$(this).parent().parent().parent().fadeOut();
+		$(this).parent().parent().parent().parent().parent().fadeOut();
 	});
 	$('.btn-minimize').click(function(e){
 		e.preventDefault();

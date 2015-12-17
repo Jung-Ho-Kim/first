@@ -101,10 +101,9 @@
 					                <h4 class="panel-title">
 					                    <div class="box-header" data-original-title>
 											<a data-toggle="collapse" data-parent="#accordion" href="#collapse${row.IDX }">
-												<h2><i class="halflings-icon white user"></i><span class="break"></span>${row.TITLE }</h2>
+												<h2>${row.IDX }<span class="break"></span>${row.TITLE }</h2>
 											</a>
 											<div class="box-icon">
-												<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 												<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
 												<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
 											</div>
@@ -112,86 +111,25 @@
 					                </h4>
 					            </div>
 								<div class="box-content">
-									<div id="collapse${row.IDX }" class="panel-collapse collapse in">
-						                <div class="panel-body">
-						                    <p>${row.CONTENTS }</p>
-						                </div>
-						            </div>
+									<c:choose>
+										<c:when test="${status.index eq 0 }">
+											<div id="collapse${row.IDX }" class="panel-collapse collapse in">
+								                <div class="panel-body">
+								                    <p>${row.CONTENTS }</p>
+								                </div>
+								            </div>
+										</c:when>
+										<c:otherwise>
+											<div id="collapse${row.IDX }" class="panel-collapse collapse">
+								                <div class="panel-body">
+								                    <p>${row.CONTENTS }</p>
+								                </div>
+								            </div>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
-						
 						</c:forEach>
-						<!-- 
-						<div class="panel panel-default">
-							<div class="panel-heading">
-				                <h4 class="panel-title">
-				                    <div class="box-header" data-original-title>
-										<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-											<h2><i class="halflings-icon white user"></i><span class="break"></span>MEMO</h2>
-										</a>
-										<div class="box-icon">
-											<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-											<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-											<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-										</div>
-									</div>
-				                </h4>
-				            </div>
-							<div class="box-content">
-								<div id="collapse1" class="panel-collapse collapse in">
-					                <div class="panel-body">
-					                    <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
-					                </div>
-					            </div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-				                <h4 class="panel-title">
-				                    <div class="box-header" data-original-title>
-										<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-											<h2><i class="halflings-icon white user"></i><span class="break"></span>MEMO</h2>
-										</a>
-										<div class="box-icon">
-											<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-											<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-											<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-										</div>
-									</div>
-				                </h4>
-				            </div>
-							<div class="box-content">
-								<div id="collapse2" class="panel-collapse collapse">
-					                <div class="panel-body">
-					                    <p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
-					                </div>
-					            </div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-				                <h4 class="panel-title">
-				                    <div class="box-header" data-original-title>
-										<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-											<h2><i class="halflings-icon white user"></i><span class="break"></span>MEMO</h2>
-										</a>
-										<div class="box-icon">
-											<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-											<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-											<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-										</div>
-									</div>
-				                </h4>
-				            </div>
-							<div class="box-content">
-								<div id="collapse3" class="panel-collapse collapse">
-					                <div class="panel-body">
-					                    <p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
-					                </div>
-					            </div>
-							</div>
-						</div>
-						-->
 					</div>
 				</div>
 			

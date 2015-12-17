@@ -3,7 +3,41 @@
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
 </head>  
+<script type="text/javascript">
 
+	function makeRequest() {
+		var httpRequest;
+		if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+			httpRequest = new XMLHttpRequest();
+		} else if (window.ActiveXObject) { // IEspring security ajax
+			try {
+				httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (e) {
+				}
+			}
+		}
+	
+		if (!httpRequest) {
+			alert('Giving up :( Cannot create an XMLHTTP instance');
+			return false;
+		}
+		return httpRequest;
+	}
+
+	function viewMemo() {
+		var httpRequest = makeRequest();
+		httpRequest.onreadystatechange = function() {
+			weatherResponse(httpRequest);
+		};
+		httpRequest.open('GET', "<c:url value='/blog/selectMemo.do'/>");
+		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		httpRequest.send(null);
+
+	}
+</script>
 <body>
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>	
 		<div class="container-fluid-full">
@@ -61,6 +95,33 @@
 				<div class="box span12">
 					<button class="btn btn-primary text-right"><i class="halflings-icon white white edit"></i></button>
 					<div class="panel-group" id="accordion">
+						<c:forEach var="row" items="${list}" varStatus="status">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+					                <h4 class="panel-title">
+					                    <div class="box-header" data-original-title>
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse${row.IDX }">
+												<h2><i class="halflings-icon white user"></i><span class="break"></span>${row.TITLE }</h2>
+											</a>
+											<div class="box-icon">
+												<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+												<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+												<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+											</div>
+										</div>
+					                </h4>
+					            </div>
+								<div class="box-content">
+									<div id="collapse${row.IDX }" class="panel-collapse collapse in">
+						                <div class="panel-body">
+						                    <p>${row.CONTENTS }</p>
+						                </div>
+						            </div>
+								</div>
+							</div>
+						
+						</c:forEach>
+						<!-- 
 						<div class="panel panel-default">
 							<div class="panel-heading">
 				                <h4 class="panel-title">
@@ -130,6 +191,7 @@
 					            </div>
 							</div>
 						</div>
+						-->
 					</div>
 				</div>
 			
